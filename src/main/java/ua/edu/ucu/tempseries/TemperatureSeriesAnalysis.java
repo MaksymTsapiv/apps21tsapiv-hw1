@@ -1,6 +1,7 @@
 package ua.edu.ucu.tempseries;
 
 import java.util.Arrays;
+import java.util.InputMismatchException;
 
 import static java.lang.Math.abs;
 import static java.lang.Math.sqrt;
@@ -14,6 +15,11 @@ public class TemperatureSeriesAnalysis {
     }
 
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
+        for(double temperature: temperatureSeries) {
+            if (temperature < -273) {
+                throw new InputMismatchException();
+            }
+        }
         this.temperatureSeries = temperatureSeries.clone();
     }
 
