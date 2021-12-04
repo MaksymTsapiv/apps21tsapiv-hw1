@@ -99,26 +99,30 @@ public class TemperatureSeriesAnalysis {
         if(temperatureSeries.length == 0) {
             throw new IllegalArgumentException();
         }
+        int count = 0;
         double[] arr = new double[temperatureSeries.length];
-        for(int temperature = 0; temperature < temperatureSeries.length; temperature++){
-            if(temperatureSeries[temperature] < tempValue){
-                arr[temperature] = temperatureSeries[temperature];
+        for (double temperature : temperatureSeries) {
+            if (temperature < tempValue) {
+                arr[count] = temperature;
+                count += 1;
             }
         }
-        return arr;
+        return Arrays.copyOf(arr, count);
     }
 
     public double[] findTempsGreaterThen(double tempValue) {
         if(temperatureSeries.length == 0) {
             throw new IllegalArgumentException();
         }
+        int count = 0;
         double[] arr = new double[temperatureSeries.length];
-        for(int temperature = 0; temperature < temperatureSeries.length; temperature++){
-            if(temperatureSeries[temperature] >= tempValue){
-                arr[temperature] = temperatureSeries[temperature];
+        for (double temperature : temperatureSeries) {
+            if (temperature >= tempValue) {
+                arr[count] = temperature;
+                count += 1;
             }
         }
-        return arr;
+        return Arrays.copyOf(arr, count);
     }
 
     public TempSummaryStatistics summaryStatistics() {
