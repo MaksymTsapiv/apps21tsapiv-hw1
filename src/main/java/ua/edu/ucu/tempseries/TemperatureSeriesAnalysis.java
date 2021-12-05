@@ -39,14 +39,14 @@ public class TemperatureSeriesAnalysis {
         if (temperatureSeries.length == 0) {
             throw new IllegalArgumentException();
         }
-        double square_diff = 0;
+        double squareDiff = 0;
         double mean = this.average();
         for (double temperature : temperatureSeries) {
             double curr = 0;
             curr = (mean - temperature) * (mean - temperature);
-            square_diff += curr;
+            squareDiff += curr;
         }
-        return sqrt(square_diff / (temperatureSeries.length - 1));
+        return sqrt(squareDiff / (temperatureSeries.length - 1));
     }
 
 
@@ -137,8 +137,8 @@ public class TemperatureSeriesAnalysis {
         int index = temperatureSeries.length;
         for (double temp : temps) {
             if (index == temperatureSeries.length) {
-                int new_size = temperatureSeries.length * 2;
-                temperatureSeries = Arrays.copyOf(temperatureSeries, new_size);
+                int newSize = temperatureSeries.length * 2;
+                temperatureSeries = Arrays.copyOf(temperatureSeries, newSize);
             }
             temperatureSeries[index] = temp;
             index++;
